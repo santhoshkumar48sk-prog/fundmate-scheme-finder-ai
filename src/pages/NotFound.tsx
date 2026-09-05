@@ -10,7 +10,7 @@ export default function NotFound() {
           <div className="space-y-3 font-mono text-xs">
             <Prompt>cd /unknown-route</Prompt>
             <p className="text-muted-foreground">
-              <span className="text-primary">error&gt;</span> no such page in the YOJANAI
+              <span className="text-primary">error&gt;</span> no such page in the FUNDMATE
               filesystem. The scheme index is intact — your session is safe.
             </p>
             <div className="flex gap-2 pt-1">

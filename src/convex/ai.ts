@@ -3,7 +3,7 @@ import { v } from "convex/values";
 import { mockParseNeed, type ParsedNeed } from "../lib/mock-ai";
 
 /**
- * YOJANAI — AI service layer (mock for the prototype).
+ * Fundmate — AI service layer (mock for the prototype).
  *
  * SWAP POINT: to go live, replace the body with a call to Claude / Gemini /
  * OpenAI (e.g. fetch to the vendor API using process.env.API_KEY in a

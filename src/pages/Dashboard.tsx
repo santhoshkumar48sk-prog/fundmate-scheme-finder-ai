@@ -143,7 +143,7 @@ export default function Dashboard() {
               <TerminalSquare className="size-4 text-primary" />
             </span>
             <span className="font-mono text-sm font-bold">
-              YOJANAI<span className="text-primary">.</span>
+              FUNDMATE<span className="text-primary">.</span>
             </span>
           </Link>
           <span className="hidden font-mono text-[10px] text-muted-foreground md:inline">
@@ -332,7 +332,7 @@ export default function Dashboard() {
               })}
             </div>
             <p className="mt-3 font-mono text-[10px] leading-4 text-muted-foreground">
-              Tick what you already hold — YOJANAI never fabricates certificates and never
+              Tick what you already hold — Fundmate never fabricates certificates and never
               stores uploads without consent.
             </p>
           </TerminalCard>

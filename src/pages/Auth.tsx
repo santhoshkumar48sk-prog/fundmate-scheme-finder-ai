@@ -114,7 +114,7 @@ function Auth({ redirectAfterAuth }: AuthProps = {}) {
               <TerminalSquare className="size-4 text-primary" />
             </span>
             <span className="font-mono text-sm font-bold">
-              YOJANAI<span className="text-primary">.</span>
+              FUNDMATE<span className="text-primary">.</span>
             </span>
           </Link>
           <Button variant="ghost" size="sm" className="ml-auto font-mono text-[11px]" onClick={() => navigate("/")}>

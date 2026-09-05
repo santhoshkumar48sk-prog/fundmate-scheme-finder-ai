@@ -1,5 +1,5 @@
 /**
- * YOJANAI — mock AI requirement parser (v1).
+ * Fundmate — mock AI requirement parser (v1).
  * Deterministic keyword/pattern engine that turns free-text needs into
  * structured requirements. Designed as a swap-in point: the response shape
  * mirrors what a Claude / Gemini / OpenAI call would return, so the action in

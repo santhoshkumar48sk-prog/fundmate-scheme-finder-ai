@@ -1,6 +1,6 @@
-# YOJANAI — AI-Powered Government Scheme Discovery & Matching
+# Fundmate — AI-Powered Government Scheme Discovery & Matching
 
-> **"You don't need to know the scheme. Just tell us your need — YOJANAI finds the opportunities for you."**
+> **"You don't need to know the scheme. Just tell us your need — Fundmate finds the opportunities for you."**
 
 A Smart India Hackathon prototype for **SIH26092 — AI-Driven Scheme Matching for Marginalized
 Entrepreneurs**. Instead of searching portals by scheme name, users describe their need in plain

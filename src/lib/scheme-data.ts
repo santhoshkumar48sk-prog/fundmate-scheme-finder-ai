@@ -1,5 +1,5 @@
 /**
- * YOJANAI — demo scheme catalogue (v1).
+ * Fundmate — demo scheme catalogue (v1).
  * Realistic demo records for Tamil Nadu + central government schemes relevant
  * to small business owners, with awareness levels so the platform can surface
  * lesser-known opportunities. Details are prototype data — in production every

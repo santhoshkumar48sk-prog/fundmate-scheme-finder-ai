@@ -46,7 +46,7 @@ const HIDDEN_DEMO = [
 function HeroTerminal() {
   return (
     <TerminalCard
-      title="yojanai — session@marginalized-entrepreneur"
+      title="fundmate — session@marginalized-entrepreneur"
       className="text-left"
       right={
         <span className="flex items-center gap-1.5">
@@ -56,7 +56,7 @@ function HeroTerminal() {
       }
     >
       <div className="space-y-2 font-mono text-xs leading-6 sm:text-[13px]">
-        <Prompt>yojanai discover --need "I run a tailoring unit. I need a loan to buy machines"</Prompt>
+        <Prompt>fundmate discover --need "I run a tailoring unit. I need a loan to buy machines"</Prompt>
         <p className="text-muted-foreground">
           <span className="text-primary">ai{">"}</span> parsing need
         </p>
@@ -117,7 +117,7 @@ export default function Landing() {
               <TerminalSquare className="size-4 text-primary" />
             </span>
             <span className="font-mono text-sm font-bold tracking-tight">
-              YOJANAI<span className="text-primary">.</span>
+              FUNDMATE<span className="text-primary">.</span>
             </span>
           </Link>
           <span className="hidden font-mono text-[10px] text-muted-foreground sm:inline">
@@ -168,7 +168,7 @@ export default function Landing() {
               <span className="text-primary">Tell us your need.</span>
             </h1>
             <p className="mt-4 max-w-xl text-sm leading-7 text-muted-foreground">
-              YOJANAI finds government opportunities for you — including the
+              Fundmate finds government opportunities for you — including the
               lesser-known ones you've never heard of. Built first for{" "}
               <span className="text-foreground">small business owners</span>: a
               2-minute smart-profile quiz, an eligibility engine, and a ranked
@@ -269,7 +269,7 @@ export default function Landing() {
               </h2>
             </div>
             <p className="max-w-sm text-xs leading-5 text-muted-foreground">
-              Most portals show the same popular schemes. YOJANAI actively
+              Most portals show the same popular schemes. Fundmate actively
               filters for low-awareness schemes your profile actually matches.
             </p>
           </div>
@@ -335,7 +335,7 @@ export default function Landing() {
       <section className="border-t border-border bg-primary/[0.05]">
         <div className="mx-auto max-w-6xl px-4 py-16 text-center">
           <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
-            <span className="text-primary">$</span> yojanai --profile small_business_owner
+            <span className="text-primary">$</span> fundmate --profile small_business_owner
           </p>
           <h2 className="mx-auto mt-3 max-w-xl font-mono text-2xl font-bold leading-tight">
             Two minutes of questions.
@@ -370,7 +370,7 @@ export default function Landing() {
         <div className="mx-auto flex max-w-6xl flex-col gap-3 px-4 py-8 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-center gap-2 font-mono text-xs">
             <TerminalSquare className="size-4 text-primary" />
-            <span className="font-bold">YOJANAI</span>
+            <span className="font-bold">FUNDMATE</span>
             <span className="text-muted-foreground">· SIH 26092 prototype</span>
           </div>
           <p className="max-w-md font-mono text-[10px] leading-4 text-muted-foreground">

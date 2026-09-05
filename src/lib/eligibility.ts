@@ -1,5 +1,5 @@
 /**
- * YOJANAI — rule-based eligibility engine.
+ * Fundmate — rule-based eligibility engine.
  * Pure, framework-free module shared between Convex queries and the frontend.
  * Every scheme ships a list of weighted rules; the engine checks a user
  * profile against each rule and produces a transparent match score.

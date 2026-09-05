@@ -17,7 +17,7 @@ export const roleValidator = v.union(
 export type Role = Infer<typeof roleValidator>;
 
 /* ------------------------------------------------------------------ */
-/* YOJANAI: Smart Profile + Scheme catalogue                           */
+/* Fundmate: Smart Profile + Scheme catalogue                           */
 /* ------------------------------------------------------------------ */
 
 export const profileValidator = v.object({
@@ -103,13 +103,13 @@ const schema = defineSchema(
       role: v.optional(roleValidator), // role of the user. do not remove
     }).index("email", ["email"]), // index for the email. do not remove or modify
 
-    // YOJANAI: one smart profile per user
+    // Fundmate: one smart profile per user
     profiles: defineTable({
       userId: v.id("users"),
       data: profileValidator,
     }).index("by_userId", ["userId"]),
 
-    // YOJANAI: verified government scheme catalogue
+    // Fundmate: verified government scheme catalogue
     schemes: defineTable({
       data: schemeValidator,
     }).index("by_schemeId", ["data.id"]),

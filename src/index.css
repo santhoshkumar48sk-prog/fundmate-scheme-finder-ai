@@ -49,7 +49,7 @@
 }
 
 /* ============================================================
-   YOJANAI — LIGHT TERMINAL THEME
+   FUNDMATE — LIGHT TERMINAL THEME
    Off-white paper, dark green-gray ink, terminal-green primary,
    restrained amber status accents. Technical, grid-aligned.
    ============================================================ */
@@ -158,9 +158,9 @@
 
   /* Dotted terminal cursor */
   .cursor-blink {
-    animation: yojanai-blink 1.1s steps(2, start) infinite;
+    animation: fundmate-blink 1.1s steps(2, start) infinite;
   }
-  @keyframes yojanai-blink {
+  @keyframes fundmate-blink {
     to {
       visibility: hidden;
     }
@@ -180,9 +180,9 @@
 
   /* Status pulse for "live" indicators */
   .status-pulse {
-    animation: yojanai-pulse 2s ease-in-out infinite;
+    animation: fundmate-pulse 2s ease-in-out infinite;
   }
-  @keyframes yojanai-pulse {
+  @keyframes fundmate-pulse {
     0%,
     100% {
       opacity: 1;
