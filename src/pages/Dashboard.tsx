@@ -29,6 +29,7 @@ import { useAuth } from "@/hooks/use-auth";
 import { DOC_LIBRARY, NEEDS, documentReadiness, type Profile, type SchemeMatch } from "@/lib/eligibility";
 import { inrCompact } from "@/lib/format";
 import { cn } from "@/lib/utils";
+import { toast } from "sonner";
 
 function greeting() {
   const h = new Date().getHours();
@@ -113,6 +114,9 @@ export default function Dashboard() {
     try {
       await updateDocuments({ documents: owned });
       setDocsDirty(false);
+      toast.success("Document checklist saved", {
+        description: `Readiness recalculated: ${readiness.pct}% of required documents available.`,
+      });
     } finally {
       setSavingDocs(false);
     }

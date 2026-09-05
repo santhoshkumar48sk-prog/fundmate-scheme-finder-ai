@@ -122,7 +122,7 @@ export function SchemeCard({
                 </span>
               </>
             )}
-            <span>match {ratingLabel(match.rating)}</span>
+            <span>{ratingLabel(match.rating)}</span>
           </div>
         </div>
 

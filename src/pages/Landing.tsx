@@ -17,7 +17,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Prompt, SectionLabel, StatusLed, TerminalCard } from "@/components/terminal";
-import { inrCompact } from "@/lib/format";
+import { useAuth } from "@/hooks/use-auth";
 
 const HIDDEN_DEMO = [
   {
@@ -58,7 +58,7 @@ function HeroTerminal() {
       <div className="space-y-2 font-mono text-xs leading-6 sm:text-[13px]">
         <Prompt>yojanai discover --need "I run a tailoring unit. I need a loan to buy machines"</Prompt>
         <p className="text-muted-foreground">
-          <span className="text-primary">ai{string}</span> parsing need
+          <span className="text-primary">ai{">"}</span> parsing need
         </p>
         <p className="pl-4 text-muted-foreground">
           ✓ understood: <span className="text-foreground/85">start_business</span>,{" "}
@@ -67,7 +67,7 @@ function HeroTerminal() {
           <span className="ml-2 text-primary">[confidence 92%]</span>
         </p>
         <p className="text-muted-foreground">
-          <span className="text-primary">engine{string} </span> running eligibility rules ×{" "}
+          <span className="text-primary">engine{">"}</span> running eligibility rules ×{" "}
           {`>`}23 schemes … <span className="text-foreground/70">done</span>
         </p>
         <div className="grid gap-1.5 pt-1 sm:grid-cols-[1fr_auto]">
@@ -94,7 +94,7 @@ function HeroTerminal() {
           </p>
         </div>
         <p className="border-t border-border pt-2 text-muted-foreground">
-          <span className="text-primary">engine{string} </span> 🔍 2 hidden schemes surfaced you didn't search for.
+          <span className="text-primary">engine{">"}</span> 🔍 2 hidden schemes surfaced you didn't search for.
           <span className="ml-1 text-amber-600">[verify at official portals]</span>
         </p>
         <Prompt dollar={false}>
@@ -106,6 +106,7 @@ function HeroTerminal() {
 }
 
 export default function Landing() {
+  const { isAuthenticated } = useAuth();
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Nav */}
@@ -123,14 +124,24 @@ export default function Landing() {
             SIH 26092 · demo build
           </span>
           <div className="ml-auto flex items-center gap-2">
-            <Button asChild variant="ghost" size="sm" className="font-mono text-[11px]">
-              <Link to="/auth">sign in</Link>
-            </Button>
-            <Button asChild size="sm" className="font-mono text-[11px]">
-              <Link to="/auth?returnTo=/quiz">
-                start quiz <ArrowRight className="size-3" />
-              </Link>
-            </Button>
+            {isAuthenticated ? (
+              <Button asChild size="sm" className="font-mono text-[11px]">
+                <Link to="/dashboard">
+                  dashboard <ArrowRight className="size-3" />
+                </Link>
+              </Button>
+            ) : (
+              <>
+                <Button asChild variant="ghost" size="sm" className="font-mono text-[11px]">
+                  <Link to="/auth">sign in</Link>
+                </Button>
+                <Button asChild size="sm" className="font-mono text-[11px]">
+                  <Link to="/auth?returnTo=/quiz">
+                    start quiz <ArrowRight className="size-3" />
+                  </Link>
+                </Button>
+              </>
+            )}
           </div>
         </div>
       </header>
@@ -164,11 +175,19 @@ export default function Landing() {
               answer to <em className="text-foreground not-italic">"what can I actually get?"</em>
             </p>
             <div className="mt-7 flex flex-wrap items-center gap-3">
-              <Button asChild size="lg" className="font-mono text-sm">
-                <Link to="/auth?returnTo=/quiz">
-                  take the smart-profile quiz <ArrowRight className="size-4" />
-                </Link>
-              </Button>
+              {isAuthenticated ? (
+                <Button asChild size="lg" className="font-mono text-sm">
+                  <Link to="/dashboard">
+                    open my dashboard <ArrowRight className="size-4" />
+                  </Link>
+                </Button>
+              ) : (
+                <Button asChild size="lg" className="font-mono text-sm">
+                  <Link to="/auth?returnTo=/quiz">
+                    take the smart-profile quiz <ArrowRight className="size-4" />
+                  </Link>
+                </Button>
+              )}
               <Button asChild variant="outline" size="lg" className="font-mono text-sm">
                 <a href="#how">
                   <Search className="size-4" /> how it works
@@ -324,14 +343,24 @@ export default function Landing() {
             A ranked answer you can act on.
           </h2>
           <div className="mt-7 flex flex-wrap justify-center gap-3">
-            <Button asChild size="lg" className="font-mono text-sm">
-              <Link to="/auth?returnTo=/quiz">
-                start the quiz <ArrowRight className="size-4" />
-              </Link>
-            </Button>
-            <Button asChild variant="outline" size="lg" className="font-mono text-sm">
-              <Link to="/auth">sign in to your dashboard</Link>
-            </Button>
+            {isAuthenticated ? (
+              <Button asChild size="lg" className="font-mono text-sm">
+                <Link to="/dashboard">
+                  view my matches <ArrowRight className="size-4" />
+                </Link>
+              </Button>
+            ) : (
+              <>
+                <Button asChild size="lg" className="font-mono text-sm">
+                  <Link to="/auth?returnTo=/quiz">
+                    start the quiz <ArrowRight className="size-4" />
+                  </Link>
+                </Button>
+                <Button asChild variant="outline" size="lg" className="font-mono text-sm">
+                  <Link to="/auth">sign in to your dashboard</Link>
+                </Button>
+              </>
+            )}
           </div>
         </div>
       </section>

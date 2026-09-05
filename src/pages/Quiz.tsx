@@ -29,6 +29,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useAuth } from "@/hooks/use-auth";
+import { toast } from "sonner";
 import { NEEDS, type Category, type Gender, type NeedCategory, type Profile } from "@/lib/eligibility";
 import { inrCompact } from "@/lib/format";
 import { parseSummaryNote, type ParsedNeed } from "@/lib/mock-ai";
@@ -90,10 +91,16 @@ function RadioCards<T extends string>({
   options: { value: T; label: string; hint?: string }[];
   value: T | undefined;
   onChange: (v: T) => void;
-  columns?: 2 | 3 | 4;
+  columns?: 2 | 3 | 4 | 6;
 }) {
+  const cols = {
+    2: "grid-cols-2",
+    3: "grid-cols-2 sm:grid-cols-3",
+    4: "grid-cols-2 sm:grid-cols-4",
+    6: "grid-cols-3 sm:grid-cols-6",
+  } as const;
   return (
-    <div className={cn("grid gap-2", columns === 2 ? "grid-cols-2" : columns === 4 ? "grid-cols-2 sm:grid-cols-4" : "grid-cols-2 sm:grid-cols-3")}>
+    <div className={cn("grid gap-2", cols[columns])}>
       {options.map((o) => (
         <button
           key={o.value}
@@ -294,6 +301,9 @@ export default function Quiz() {
         documents: p.documents ?? [],
       };
       await saveProfile({ profile });
+      toast.success("Smart profile saved", {
+        description: "Running the eligibility engine across the scheme catalogue…",
+      });
       navigate("/dashboard");
     } catch {
       setError("Could not save profile. Please try again.");

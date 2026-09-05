@@ -18,7 +18,7 @@ export function TerminalCard({
   return (
     <div
       className={cn(
-        "overflow-hidden rounded-md border border-border bg-card terminal-shadow",
+        "overflow-hidden rounded-md border border-border bg-card",
         className,
       )}
     >
