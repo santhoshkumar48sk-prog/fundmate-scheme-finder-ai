@@ -19,7 +19,7 @@ export type ParsedNeed = {
 const KEYWORDS: Record<NeedCategory, string[]> = {
   agriculture: ["farm", "agriculture", "crop", "farming", "agri", "விவசாய", "பயிர்", "நிலம்"],
   start_business: ["business", "start", "shop", "enterprise", "venture", "entrepreneur", "தொழில்", "கடை", "வணிக"],
-  business_loan: ["loan", "capital", "working capital", "finance", "fund", "credit", "கடன்", "மூலதனம்"],
+  business_loan: ["business loan", "loan", "capital", "working capital", "finance", "fund", "credit", "கடன்", "மூலதனம்"],
   higher_education: ["college", "degree", "study", "course", "education", "engineering", "கல்லூரி", "படிப்பு"],
   study_abroad: ["abroad", "overseas", "foreign", "japan", "usa", "uk", "canada", "germany", "வெளிநாடு"],
   housing: ["house", "home", "housing", "rent", "construct", "வீடு", "குடில்"],
@@ -42,9 +42,11 @@ export function mockParseNeed(text: string): ParsedNeed {
 
   for (const [need, words] of Object.entries(KEYWORDS) as [NeedCategory, string[]][]) {
     let hit = 0;
+    // Longer keyword hits count for more: a phrase like "business loan" is a
+    // far more specific signal than a generic word like "shop".
     for (const w of words) {
       if (lowered.includes(w.toLowerCase())) {
-        hit += w.length > 6 ? 2 : 1;
+        hit += w.length;
         signals.push(w);
       }
     }
