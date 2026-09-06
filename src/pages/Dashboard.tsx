@@ -24,6 +24,8 @@ import { MatchRing } from "@/components/match-ring";
 import { SchemeCard } from "@/components/scheme-card";
 import { SchemeDetail } from "@/components/scheme-detail";
 import { FinancialCalculator } from "@/components/financial-calculator";
+import { PartnerMap } from "@/components/partner-map";
+import { LanguageSwitcher, useLang } from "@/components/language";
 import { Brackets, Prompt, SectionLabel, StatusLed, TerminalCard } from "@/components/terminal";
 import { useAuth } from "@/hooks/use-auth";
 import { DOC_LIBRARY, NEEDS, documentReadiness, type Profile, type SchemeMatch } from "@/lib/eligibility";
@@ -31,11 +33,11 @@ import { inrCompact } from "@/lib/format";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
 
-function greeting() {
+function greetingKey() {
   const h = new Date().getHours();
-  if (h < 12) return "Good morning";
-  if (h < 17) return "Good afternoon";
-  return "Good evening";
+  if (h < 12) return "dash.greeting.morning" as const;
+  if (h < 17) return "dash.greeting.afternoon" as const;
+  return "dash.greeting.evening" as const;
 }
 
 const DEMO_NOTIFICATIONS = [
@@ -46,6 +48,7 @@ const DEMO_NOTIFICATIONS = [
 
 export default function Dashboard() {
   const { user, signOut } = useAuth();
+  const { t } = useLang();
   const navigate = useNavigate();
   const data = useQuery(api.schemes.getMatches);
   const seedSchemes = useMutation(api.schemes.seedSchemes);
@@ -146,6 +149,7 @@ export default function Dashboard() {
               FUNDMATE<span className="text-primary">.</span>
             </span>
           </Link>
+          <LanguageSwitcher className="hidden sm:flex" />
           <span className="hidden font-mono text-[10px] text-muted-foreground md:inline">
             session: {user?.name || user?.email || "guest"}
           </span>
@@ -194,7 +198,7 @@ export default function Dashboard() {
               eligibility engine: online · {matches.length} scheme(s) scored
             </p>
             <h1 className="mt-1 font-mono text-2xl font-bold sm:text-3xl">
-              {greeting()}, {profile!.name?.split(" ")[0] || "entrepreneur"} 👋
+              {t(greetingKey())}, {profile!.name?.split(" ")[0] || "entrepreneur"} 👋
             </h1>
             <p className="mt-1 font-mono text-xs text-muted-foreground">
               need: <span className="text-foreground">{need?.label ?? profile!.needCategory}</span>
@@ -391,6 +395,25 @@ export default function Dashboard() {
         <section className="space-y-3">
           <SectionLabel>financial_calculator // loan_math for your scheme</SectionLabel>
           <FinancialCalculator preset={best?.scheme.loanWindow} />
+        </section>
+
+        {/* Smart Partner Router — nearest funded SCA/Bank/NBFC-MFI */}
+        <section className="space-y-3">
+          <SectionLabel>smart_partner_router // geospatial + fund-aware</SectionLabel>
+          <PartnerMap
+            schemeId={best?.scheme.id}
+            schemeName={best?.scheme.name}
+            amount={
+              profile!.financialRequirement ||
+              profile!.projectCost ||
+              (best?.scheme.loanWindow ? best.scheme.loanWindow.max * 100000 : 0) ||
+              500000
+            }
+          />
+          <p className="font-mono text-[10px] leading-4 text-muted-foreground">
+            Partners are filtered by their live fund utilisation — offices with exhausted
+            allocations are hidden so you never apply where money has run out.
+          </p>
         </section>
 
         {/* Footer note */}

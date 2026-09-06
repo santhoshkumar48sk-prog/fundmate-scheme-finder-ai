@@ -15,6 +15,7 @@ import {
   HeartHandshake,
   Home,
   Loader2,
+  Mic,
   Plane,
   Sprout,
   Store,
@@ -28,6 +29,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { LanguageSwitcher, useLang } from "@/components/language";
+import { useSpeech } from "@/hooks/use-speech";
 import { useAuth } from "@/hooks/use-auth";
 import { toast } from "sonner";
 import { NEEDS, type Category, type Gender, type NeedCategory, type Profile } from "@/lib/eligibility";
@@ -225,6 +228,7 @@ function SelectField({
 
 export default function Quiz() {
   const { isAuthenticated, isLoading: authLoading } = useAuth();
+  const { t, locale } = useLang();
   const existingProfile = useQuery(api.profiles.getMyProfile);
   const saveProfile = useMutation(api.profiles.saveProfile);
   const parseNeed = useAction(api.ai.parseNeed);
@@ -248,6 +252,10 @@ export default function Quiz() {
   const [needText, setNeedText] = useState("");
   const [parsed, setParsed] = useState<ParsedNeed | null>(null);
   const [parsing, setParsing] = useState(false);
+
+  const speech = useSpeech(locale, (text) =>
+    setNeedText((prev) => (prev ? `${prev} ${text}`.trim() : text)),
+  );
 
   const set = <K extends keyof Profile>(k: K, v: Profile[K]) =>
     setP((prev) => ({ ...prev, [k]: v }));
@@ -337,6 +345,7 @@ export default function Quiz() {
               small_business_owner · SIH 26092 · 2 min
             </p>
           </div>
+          <LanguageSwitcher className="ml-auto" />
           <div className="ml-auto text-right font-mono text-[11px] text-muted-foreground">
             <span className="tabular text-foreground">{String(step + 1).padStart(2, "0")}</span>
             /{String(STEPS.length).padStart(2, "0")}
@@ -407,6 +416,22 @@ export default function Quiz() {
                   >
                     {parsing ? <Loader2 className="size-3 animate-spin" /> : <Cpu className="size-3" />}
                     analyze with mock AI
+                  </Button>
+                  <Button
+                    type="button"
+                    variant={speech.listening ? "default" : "outline"}
+                    size="sm"
+                    onClick={speech.listening ? speech.stop : speech.start}
+                    disabled={!speech.supported}
+                    title={speech.supported ? t("voice.micHint") : t("voice.unsupported")}
+                    className="font-mono text-[11px]"
+                  >
+                    {speech.listening ? (
+                      <Loader2 className="size-3 animate-spin" />
+                    ) : (
+                      <Mic className={cn("size-3", !speech.supported && "opacity-40")} />
+                    )}
+                    {speech.listening ? t("voice.listening") : t("voice.micHint")}
                   </Button>
                   {parsed && (
                     <span className="truncate font-mono text-[10px] text-primary">
