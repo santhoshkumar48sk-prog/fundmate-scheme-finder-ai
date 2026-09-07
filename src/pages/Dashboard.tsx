@@ -159,7 +159,7 @@ export default function Dashboard() {
               <PopoverTrigger asChild>
                 <Button variant="outline" size="icon" className="relative">
                   <Bell className="size-4" />
-                  <span className="absolute -right-1 -top-1 flex size-4 items-center justify-center rounded-full bg-amber-500 font-mono text-[9px] font-bold text-white">
+                  <span className="absolute -right-1 -top-1 flex size-4 items-center justify-center rounded-full bg-primary font-mono text-[9px] font-bold text-primary-foreground">
                     3
                   </span>
                 </Button>
@@ -225,7 +225,7 @@ export default function Dashboard() {
         <section className="space-y-4">
           <div className="flex flex-wrap items-center justify-between gap-2">
             <div>
-              <SectionLabel>ai_recommendation // ranked by your profile</SectionLabel>
+              <SectionLabel className="text-ai">ai_recommendation // ranked by your profile</SectionLabel>
               <h2 className="mt-1 font-mono text-lg font-bold">
                 {matches.length} potential opportunities for you
               </h2>
@@ -245,13 +245,13 @@ export default function Dashboard() {
         <section className="space-y-4">
           <div className="flex flex-wrap items-center justify-between gap-2">
             <div>
-              <SectionLabel className="text-primary">hidden_discovery // low-awareness matches</SectionLabel>
+              <SectionLabel className="text-ai">hidden_discovery // low-awareness matches</SectionLabel>
               <h2 className="mt-1 font-mono text-lg font-bold">
-                <Search className="mr-1.5 inline size-4 text-primary" />
+                <Search className="mr-1.5 inline size-4 text-ai" />
                 Schemes you didn't know you could get
               </h2>
             </div>
-            <span className="rounded-[3px] border border-primary/30 bg-primary/10 px-2 py-1 font-mono text-[10px] text-primary">
+            <span className="rounded-[3px] border border-ai/30 bg-ai-light px-2 py-1 font-mono text-[10px] text-ai-foreground">
               {hidden.length} hidden gem(s)
             </span>
           </div>
@@ -315,7 +315,7 @@ export default function Dashboard() {
                     onClick={() => toggleDoc(key)}
                     className={cn(
                       "flex w-full items-start gap-2 rounded-[3px] border px-2.5 py-2 text-left transition-colors",
-                      has ? "border-primary/30 bg-primary/[0.06]" : "border-border bg-background hover:border-amber-400/50",
+                      has ? "border-primary/30 bg-primary/[0.06]" : "border-border bg-background hover:border-warning/50",
                     )}
                   >
                     <span className={cn("mt-0.5 flex size-4 shrink-0 items-center justify-center rounded-[3px] border", has ? "border-primary bg-primary text-primary-foreground" : "border-border text-transparent")}>
@@ -380,7 +380,7 @@ export default function Dashboard() {
                     </li>
                   ))}
                 </ul>
-                <p className="rounded-[3px] border border-amber-500/30 bg-amber-100/40 px-2.5 py-1.5 font-mono text-[10px] text-amber-800">
+                <p className="rounded-[3px] border border-warning/30 bg-warning-light px-2.5 py-1.5 font-mono text-[10px] text-warning-foreground">
                   Only genuine, documented actions are suggested — never fake certificates or
                   misreporting income.
                 </p>

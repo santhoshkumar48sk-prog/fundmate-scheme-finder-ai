@@ -12,6 +12,7 @@ import { Brackets } from "@/components/terminal";
 import type { Scheme, SchemeMatch } from "@/lib/eligibility";
 import { DOC_LIBRARY } from "@/lib/eligibility";
 import { inrCompact } from "@/lib/format";
+import { cn } from "@/lib/utils";
 import {
   BadgeCheck,
   Check,
@@ -54,10 +55,20 @@ export function SchemeDetail({
             </div>
           </div>
           <div className="mt-2 flex flex-wrap items-center gap-1.5">
-            <Badge variant="outline" className="border-primary/30 bg-primary/10 font-mono text-[10px] text-primary">
+            <Badge variant="outline" className="border-success/30 bg-success-light font-mono text-[10px] text-success-foreground">
               <BadgeCheck className="size-3" /> Officially verified
             </Badge>
-            <Badge variant="outline" className="font-mono text-[10px]">
+            <Badge
+              variant="outline"
+              className={cn(
+                "font-mono text-[10px]",
+                s.awareness === "hidden"
+                  ? "border-ai/30 bg-ai-light text-ai-foreground"
+                  : s.awareness === "lesser"
+                    ? "border-info/30 bg-info-light text-info-foreground"
+                    : "",
+              )}
+            >
               {s.awareness === "hidden"
                 ? "Hidden gem — low awareness"
                 : s.awareness === "lesser"
@@ -124,7 +135,7 @@ export function SchemeDetail({
                 <ul className="space-y-1.5">
                   {match.failed.map((f) => (
                     <li key={f.rule.when} className="flex items-start gap-2 font-mono text-[11px]">
-                      <X className="mt-0.5 size-3.5 shrink-0 text-amber-600" />
+                      <X className="mt-0.5 size-3.5 shrink-0 text-warning" />
                       <span className="text-foreground/70">
                         {f.rule.when}
                         {f.rule.fix && (

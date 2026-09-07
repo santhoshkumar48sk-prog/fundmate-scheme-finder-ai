@@ -29,9 +29,9 @@ import { cn } from "@/lib/utils";
 const DEMO_LOC = { lat: 11.0168, lng: 76.9558 };
 
 const TYPE_COLOR: Record<PartnerType, string> = {
-  SCA: "#15803d", // terminal green
-  BANK: "#1d4ed8", // blue
-  "NBFC-MFI": "#b45309", // amber
+  SCA: "#16A34A", // success green
+  BANK: "#2563EB", // info blue
+  "NBFC-MFI": "#F59E0B", // warning amber
 };
 
 function markerIcon(type: PartnerType) {
@@ -131,7 +131,7 @@ export function PartnerMap({ schemeId, schemeName, amount, className }: Props) {
             <Circle
               center={[loc.lat, loc.lng]}
               radius={8000}
-              pathOptions={{ color: "#15803d", weight: 1, fillOpacity: 0.05 }}
+              pathOptions={{ color: "#243B7A", weight: 1, fillOpacity: 0.05 }}
             />
             {shown.slice(0, 8).map((p) => (
               <Marker key={p.id} position={[p.lat, p.lng]} icon={markerIcon(p.type)}>
@@ -148,7 +148,7 @@ export function PartnerMap({ schemeId, schemeName, amount, className }: Props) {
             ))}
           </MapContainer>
           {isDemo && (
-            <span className="absolute left-2 top-2 z-[1000] rounded-[3px] border border-amber-500/40 bg-amber-100/90 px-2 py-0.5 font-mono text-[9px] text-amber-800">
+            <span className="absolute left-2 top-2 z-[1000] rounded-[3px] border border-warning/40 bg-warning-light/90 px-2 py-0.5 font-mono text-[9px] text-warning-foreground">
               {t("partners.denied")}
             </span>
           )}
@@ -157,7 +157,7 @@ export function PartnerMap({ schemeId, schemeName, amount, className }: Props) {
         {/* Ranked list */}
         <div className="max-h-80 space-y-2 overflow-y-auto border-t border-border p-3 lg:border-l lg:border-t-0">
           {noFunds && (
-            <p className="rounded-[3px] border border-amber-500/30 bg-amber-100/40 p-2 font-mono text-[10px] leading-4 text-amber-800">
+            <p className="rounded-[3px] border border-warning/30 bg-warning-light p-2 font-mono text-[10px] leading-4 text-warning-foreground">
               {t("partners.noPartners")}
             </p>
           )}
@@ -184,7 +184,7 @@ export function PartnerMap({ schemeId, schemeName, amount, className }: Props) {
               </p>
               <p className="mt-0.5 font-mono text-[10px]">
                 <span className="text-muted-foreground">{t("partners.fundsAvailable")}:</span>{" "}
-                <span className={cn(p.status === "available" ? "text-primary" : "text-amber-700")}>
+                <span className={cn(p.status === "available" ? "text-primary" : "text-warning-foreground")}>
                   ₹{p.available}L
                 </span>{" "}
                 <span className="text-muted-foreground">

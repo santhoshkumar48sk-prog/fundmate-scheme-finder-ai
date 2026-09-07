@@ -186,11 +186,11 @@ export function FinancialCalculator({
           </div>
         </div>
 
-        <div className="flex flex-wrap items-center justify-between gap-2 rounded-md border border-amber-500/30 bg-amber-100/40 px-3 py-2">
-          <p className="font-mono text-[11px] text-amber-800">
+        <div className="flex flex-wrap items-center justify-between gap-2 rounded-md border border-success/30 bg-success-light px-3 py-2">
+          <p className="font-mono text-[11px] text-success-foreground">
             Effective financial benefit with subsidy + interest savings
           </p>
-          <p className="tabular font-mono text-sm font-bold text-amber-700">
+          <p className="tabular font-mono text-sm font-bold text-success-foreground">
             {inr(Math.round(r.saved))}
           </p>
         </div>

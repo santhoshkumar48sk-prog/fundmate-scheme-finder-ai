@@ -159,7 +159,7 @@ function Auth({ redirectAfterAuth }: AuthProps = {}) {
                         )}
                       </Button>
                     </div>
-                    {error && <p className="mt-2 font-mono text-[11px] text-red-600">{error}</p>}
+                    {error && <p className="mt-2 font-mono text-[11px] text-error">{error}</p>}
 
                     <div className="mt-4">
                       <div className="relative">
@@ -218,7 +218,7 @@ function Auth({ redirectAfterAuth }: AuthProps = {}) {
                       </InputOTP>
                     </div>
                     {error && (
-                      <p className="mt-2 text-center font-mono text-[11px] text-red-600">
+                      <p className="mt-2 text-center font-mono text-[11px] text-error">
                         {error}
                       </p>
                     )}

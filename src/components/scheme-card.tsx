@@ -54,7 +54,7 @@ export function SchemeCard({
         <div className="flex items-center gap-3 sm:flex-col sm:gap-1">
           {ranked ? (
             <span className="flex size-10 items-center justify-center rounded-md border border-border bg-secondary/70 font-mono text-sm font-semibold text-foreground">
-              {rank === 1 ? <Crown className="size-4 text-amber-600" /> : rank === 2 ? <Medal className="size-4 text-foreground/70" /> : <Medal className="size-4 text-foreground/40" />}
+              {rank === 1 ? <Crown className="size-4 text-ai" /> : rank === 2 ? <Medal className="size-4 text-foreground/70" /> : <Medal className="size-4 text-foreground/40" />}
             </span>
           ) : (
             <span className="flex size-10 items-center justify-center rounded-md border border-border bg-secondary/70 font-mono text-xs text-muted-foreground">
@@ -75,8 +75,8 @@ export function SchemeCard({
                 className={cn(
                   "font-mono text-[10px]",
                   awareness.tone === "green"
-                    ? "border-primary/30 bg-primary/10 text-primary"
-                    : "border-amber-500/40 bg-amber-100/60 text-amber-700",
+                    ? "border-ai/30 bg-ai-light text-ai-foreground"
+                    : "border-info/30 bg-info-light text-info-foreground",
                 )}
               >
                 <Search className="size-3" /> {awareness.label}
@@ -100,7 +100,7 @@ export function SchemeCard({
             ))}
             {match.failed.slice(0, 1).map((f) => (
               <li key={f.rule.when} className="flex items-start gap-1.5 font-mono text-[11px] text-muted-foreground">
-                <X className="mt-0.5 size-3 shrink-0 text-amber-600" />
+                <X className="mt-0.5 size-3 shrink-0 text-warning" />
                 <span className="line-clamp-1">{f.rule.when}</span>
               </li>
             ))}

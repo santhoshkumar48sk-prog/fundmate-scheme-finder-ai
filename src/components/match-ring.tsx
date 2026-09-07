@@ -17,7 +17,7 @@ export function MatchRing({
   const r = (size - stroke) / 2;
   const c = 2 * Math.PI * r;
   const color =
-    score >= 90 ? "stroke-primary" : score >= 75 ? "stroke-amber-500" : score >= 55 ? "stroke-amber-400" : "stroke-foreground/30";
+    score >= 90 ? "stroke-primary" : score >= 75 ? "stroke-ai" : score >= 55 ? "stroke-info" : "stroke-disabled";
 
   return (
     <div

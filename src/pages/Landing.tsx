@@ -72,21 +72,21 @@ function HeroTerminal() {
         </p>
         <div className="grid gap-1.5 pt-1 sm:grid-cols-[1fr_auto]">
           <p>
-            <span className="text-amber-600">1.</span> PM Vishwakarma{" "}
+            <span className="text-ai">1.</span> PM Vishwakarma{" "}
             <span className="text-muted-foreground">— artisan loan, 0% effective interest</span>
           </p>
           <p className="tabular text-primary">
             <span className="mr-1 text-muted-foreground">match</span> 96%
           </p>
           <p>
-            <span className="text-amber-600">2.</span> PMEGP{" "}
+            <span className="text-ai">2.</span> PMEGP{" "}
             <span className="text-muted-foreground">— 25–35% capital subsidy</span>
           </p>
           <p className="tabular text-primary">
             <span className="mr-1 text-muted-foreground">match</span> 91%
           </p>
           <p>
-            <span className="text-amber-600">3.</span> CGTMSE{" "}
+            <span className="text-ai">3.</span> CGTMSE{" "}
             <span className="text-muted-foreground">— collateral-free guarantee</span>
           </p>
           <p className="tabular text-primary">
@@ -95,7 +95,7 @@ function HeroTerminal() {
         </div>
         <p className="border-t border-border pt-2 text-muted-foreground">
           <span className="text-primary">engine{">"}</span> 🔍 2 hidden schemes surfaced you didn't search for.
-          <span className="ml-1 text-amber-600">[verify at official portals]</span>
+          <span className="ml-1 text-warning">[verify at official portals]</span>
         </p>
         <Prompt dollar={false}>
           you_didn't_need_to_know_the_scheme.
@@ -155,7 +155,7 @@ export default function Landing() {
             transition={{ duration: 0.5 }}
           >
             <div className="flex flex-wrap items-center gap-2">
-              <Badge variant="outline" className="border-primary/30 bg-primary/10 font-mono text-[10px] text-primary">
+              <Badge variant="outline" className="border-ai/30 bg-ai-light font-mono text-[10px] text-ai-foreground">
                 <Cpu className="size-3" /> AI + rule-based matching
               </Badge>
               <Badge variant="outline" className="font-mono text-[10px]">
@@ -165,7 +165,7 @@ export default function Landing() {
             <h1 className="mt-5 font-mono text-3xl font-bold leading-tight tracking-tight sm:text-4xl lg:text-[2.75rem]">
               You don't need to know the scheme.
               <br />
-              <span className="text-primary">Tell us your need.</span>
+              <span className="ai-gradient-text">Tell us your need.</span>
             </h1>
             <p className="mt-4 max-w-xl text-sm leading-7 text-muted-foreground">
               Fundmate finds government opportunities for you — including the
@@ -261,9 +261,9 @@ export default function Landing() {
         <div className="mx-auto max-w-6xl px-4 py-16">
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
-              <SectionLabel className="text-primary">
-                hidden_gems // the point of this platform
-              </SectionLabel>
+            <SectionLabel className="text-ai">
+              hidden_gems // the point of this platform
+            </SectionLabel>
               <h2 className="mt-2 max-w-xl font-mono text-2xl font-bold">
                 Schemes you didn't know you could get
               </h2>
@@ -276,19 +276,19 @@ export default function Landing() {
 
           <div className="mt-8 grid gap-4 md:grid-cols-3">
             {HIDDEN_DEMO.map((s, i) => (
-              <div key={s.name} className="rounded-md border border-primary/25 bg-card p-4">
+              <div key={s.name} className="rounded-md border border-ai/25 bg-card p-4">
                 <div className="flex items-center justify-between">
-                  <Badge variant="outline" className="border-primary/30 bg-primary/10 font-mono text-[10px] text-primary">
+                  <Badge variant="outline" className="border-ai/30 bg-ai-light font-mono text-[10px] text-ai-foreground">
                     <Search className="size-3" /> low awareness
                   </Badge>
-                  <span className="tabular font-mono text-sm font-bold text-primary">
+                  <span className="tabular font-mono text-sm font-bold text-ai">
                     {s.score}%
                   </span>
                 </div>
                 <h3 className="mt-3 font-mono text-sm font-semibold leading-snug">{s.name}</h3>
                 <p className="mt-2 text-xs leading-5 text-muted-foreground">{s.line}</p>
                 <p className="mt-3 font-mono text-[10px] text-muted-foreground">
-                  <BadgeCheck className="mr-1 inline size-3 text-primary" />
+                  <BadgeCheck className="mr-1 inline size-3 text-ai" />
                   {s.dept}
                 </p>
                 <p className="mt-2 font-mono text-[10px] text-foreground/70">

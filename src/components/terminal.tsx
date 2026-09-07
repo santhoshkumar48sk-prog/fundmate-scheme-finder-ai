@@ -24,9 +24,9 @@ export function TerminalCard({
     >
       <div className="flex items-center gap-2 border-b border-border bg-secondary/70 px-3 py-2">
         <span className="flex gap-1.5">
-          <i className="size-2.5 rounded-full bg-[#e0b341]/80" />
+          <i className="size-2.5 rounded-full bg-warning/70" />
           <i className="size-2.5 rounded-full bg-primary/50" />
-          <i className="size-2.5 rounded-full bg-foreground/20" />
+          <i className="size-2.5 rounded-full bg-disabled/60" />
         </span>
         <span className="ml-1 truncate font-mono text-[11px] tracking-wide text-muted-foreground">
           {title}
@@ -49,10 +49,10 @@ export function StatusLed({
   className?: string;
 }) {
   const tones: Record<string, string> = {
-    green: "bg-primary",
-    amber: "bg-amber-500",
-    gray: "bg-foreground/25",
-    red: "bg-red-600",
+    green: "bg-success",
+    amber: "bg-warning",
+    gray: "bg-disabled",
+    red: "bg-error",
   };
   return (
     <span

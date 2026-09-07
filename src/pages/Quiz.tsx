@@ -585,7 +585,7 @@ export default function Quiz() {
                   </div>
                 ))}
               </div>
-              {error && <p className="font-mono text-[11px] text-red-600">{error}</p>}
+              {error && <p className="font-mono text-[11px] text-error">{error}</p>}
               <Button onClick={handleSave} disabled={saving} className="w-full font-mono text-sm">
                 {saving ? <Loader2 className="size-4 animate-spin" /> : <Check className="size-4" />}
                 {saving ? "matching schemes…" : "save profile & find my schemes"}
